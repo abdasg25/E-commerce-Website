@@ -11,7 +11,7 @@ const recent = async (req, res) => {
     // Respond with the orders
     res.status(200).json({ success: true, result: orders })
   } catch (error) {
-    res.status(500).json({ error: 'Server error', success: false })
+    next('Server Error while fetching data')
   }
 }
 
@@ -28,12 +28,10 @@ const add = async (req, res) => {
     !address ||
     !payment
   ) {
-    return res
-      .status(400)
-      .json({
-        success: false,
-        error: 'All fields including at least one order item are required'
-      })
+    return res.status(400).json({
+      success: false,
+      error: 'All fields including at least one order item are required'
+    })
   }
 
   try {
@@ -53,12 +51,10 @@ const add = async (req, res) => {
         p => p._id.toString() === item.productId.toString()
       )
       if (!product || product.stock < item.quantity) {
-        return res
-          .status(400)
-          .json({
-            success: false,
-            error: `Not enough stock for product ${item.productId}`
-          })
+        return res.status(400).json({
+          success: false,
+          error: `Not enough stock for product ${item.productId}`
+        })
       }
     }
 
@@ -82,16 +78,14 @@ const add = async (req, res) => {
     }
 
     // Respond with the saved order
-    res
-      .status(201)
-      .json({
-        success: true,
-        result: 'Order submitted successfully',
-        order: savedOrder
-      })
+    res.status(201).json({
+      success: true,
+      result: 'Order submitted successfully',
+      order: savedOrder
+    })
   } catch (error) {
     console.error(error)
-    res.status(500).json({ error: 'Server error', success: false })
+    next('Server Error while adding order')
   }
 }
 

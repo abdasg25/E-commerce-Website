@@ -6,7 +6,7 @@ const allProducts = async (req, res) => {
     const products = await Product.find() // Query to get all product
     res.status(200).json({ success: true, result: products })
   } catch (error) {
-    res.status(500).json({ error: 'Server error', success: false })
+    next('Server Error while fetching data')
   }
 }
 
@@ -17,7 +17,7 @@ const category = async (req, res) => {
     const products = await Product.find({ category }) // Query to get products by category
     res.status(200).json({ success: true, result: products })
   } catch (error) {
-    res.status(500).json({ error: 'Server error', success: false })
+    next('Server Error while fetching data')
   }
 }
 
@@ -28,7 +28,7 @@ const filterBySize = async (req, res) => {
     const products = await Product.find({ size }) // Query to get products by category
     res.status(200).json({ success: true, result: products })
   } catch (error) {
-    res.status(500).json({ error: 'Server error', success: false })
+    next('Server Error while fetching data')
   }
 }
 
@@ -50,7 +50,7 @@ const filterByPrice = async (req, res) => {
 
     res.status(200).json({ success: true, result: products })
   } catch (error) {
-    res.status(500).json({ error: 'Server error', success: false })
+    next('Server Error while fetching data')
   }
 }
 
@@ -60,7 +60,7 @@ const add = async (req, res) => {
     await Product.create(req.body) // Add new product
     res.status(200).json({ success: true, result: 'Added successfully' })
   } catch (error) {
-    res.status(500).json({ error: 'Server error',error, success: false })
+    next('Server Error while fetching data')
   }
 }
 

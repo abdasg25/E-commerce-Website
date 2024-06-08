@@ -3,6 +3,7 @@ import cors from 'cors'
 import dotenv from 'dotenv'
 import { PORT } from '../Constant/Constant.js'
 import connectToMongo from '../DatabaseConnection/index.js'
+import ErrorMiddleWare from '../Middlewares/ErrorMiddleware.js'
 
 dotenv.config()
 const app = express()
@@ -17,6 +18,7 @@ import orderRoute from '../Routes/orderRoutes.js'
 app.use('/api/v1/user', userRoute)
 app.use('/api/v1/product', productRoute)
 app.use('/api/v1/order', orderRoute)
+app.use(ErrorMiddleWare)
 
 connectToMongo()
   .then(() => {

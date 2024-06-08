@@ -1,73 +1,27 @@
+// importing modules
 import User from '../Models/User.js'
 import Order from '../Models/Order.js'
 import bcryptjs from 'bcryptjs'
-import nodemailer from 'nodemailer'
 import jsonwebtoken from 'jsonwebtoken'
-import crypto from 'crypto'
 
-const saveVerificationToken = async (userId, verificationToken) => {
-  await User.findOneAndUpdate(
-    { _id: userId },
-    {
-      token: verificationToken.token,
-      tokenExpires: verificationToken.expires
-    }
-  )
-}
+//importing files
+import generateVerificationToken from '../Utils/generateVerificationToken.js'
+import saveVerificationToken from '../Utils/saveVerificationToken.js'
+import sendVerificationEmail from '../Utils/sendVerificationEmail.js'
 
-const generateVerificationToken = () => {
-  const token = crypto.randomBytes(64).toString('hex')
-  const expires = Date.now() + 2 * 24 * 60 * 60 * 1000 // 2 days from now
-  return {
-    token: token,
-    expires: new Date(expires) // Convert to Date object
-  }
-}
-
-// sendVerificationMail
-const sendVerificationEmail = async (email, token) => {
-  const transporter = nodemailer.createTransport({
-    host: process.env.HOST,
-    port: process.env.NODEMAILER_PORT,
-    secure: false,
-    service: process.env.SERVICE,
-    auth: {
-      user: process.env.EMAIL,
-      pass: process.env.PASSWORD
-    }
-  })
-
-  const mailOptions = {
-    from: process.env.EMAIL,
-    to: email,
-    subject: 'Verify your email address',
-    text: `Please click the following link to verify your email address: http://localhost:3000/ecommerence/verifyUser/${token}`,
-    html: `<p>Please click this link to verify your account:</p> <a href="http://localhost:3000/ecommerence/verifyUser/${token}">Verify</a><br>Regards<br>Team Abdul Shoping System`
-  }
-
-  return await transporter.sendMail(mailOptions, (error, info) => {
-    if (error) {
-      console.error('Error sending email:', error)
-      return false
-    } else {
-      console.log('Email sent:', info.response)
-      return true
-    }
-  })
-}
 
 // http://localhost:4000/api/v1/user/signup
-const signup = async (req, res) => {
+const signup = async (req, res, next) => {
   const { cnic, username, email, password } = req.body
+  if (!cnic || !username || !email || !password){
+    next("Not Data")
+  }
   const alreadyExistUsername = await User.findOne({ username })
   const alreadyExistEmail = await User.findOne({ email })
   const alreadyExistCnic = await User.findOne({ cnic })
 
   if (alreadyExistUsername || alreadyExistEmail || alreadyExistCnic) {
-    return res.status(400).json({
-      message: 'username, cnic, or email already exists',
-      success: false
-    })
+    next('User already exist')
   } else {
     try {
       const verificationToken = generateVerificationToken()
@@ -86,11 +40,7 @@ const signup = async (req, res) => {
         .status(200)
         .json({ message: 'User added successfully', success: true })
     } catch (error) {
-      return res.status(500).json({
-        message: 'Error here',
-        errors: [error.message],
-        success: false
-      })
+      next('Server Error while signup')
     }
   }
 }
@@ -135,25 +85,20 @@ const login = async (req, res) => {
             token: `Bearer ${token}`,
             message: 'login successfully',
             success,
-            role: auth_user.role
+            userId: auth_user._id
           })
         }
       }
     }
   } catch (error) {
-    return res.status(500).json({ message: error.message })
+    next('Server Error while signin')
   }
 }
 
 // http://localhost:4000/api/v1/user/histroy
 const histroy = async (req, res) => {
   try {
-    const { token } = req.body
-    if (!token) {
-      return res
-        .status(400)
-        .json({ message: 'Token is required', success: false })
-    }
+    const token = req.headers.authorization
     const decoded = jsonwebtoken.verify(token, process.env.JWT_SECRET)
     const userId = decoded.auth_user._id
     const orderById = await Order.find({ boughtBy: userId }).populate(
@@ -161,36 +106,43 @@ const histroy = async (req, res) => {
     )
     res.status(200).json({ success: true, result: orderById })
   } catch (error) {
-    res.status(500).json({ error: 'Server error', success: false })
+    next('Server Error while fetching histroy')
   }
 }
 
 // http://localhost:4000/api/v1/user/verifyUser
 const verifyUser = async (req, res) => {
-  const token = req.body.token;
+  const token = req.body.token
   try {
     // Find and update the user if the verification token is valid and not expired
     const verifiedUser = await User.findOneAndUpdate(
       {
-        "token": token,
-        "tokenExpires": { $gt: Date.now() },
+        token: token,
+        tokenExpires: { $gt: Date.now() }
       },
       {
         isActive: true,
-        "token": null,
-      },
-    );
+        token: null
+      }
+    )
     // Check if user was found and updated
     if (verifiedUser) {
-      return res.status(200).json({ message: "Account verified", success: true });
+      return res
+        .status(200)
+        .json({ message: 'Account verified', success: true })
     } else {
       // If no user was found or token is invalid/expired
-      return res.status(401).json({ message: "Invalid or expired verification token", success: false });
+      return res
+        .status(401)
+        .json({
+          message: 'Invalid or expired verification token',
+          success: false
+        })
     }
   } catch (error) {
-    console.error("Error verifying account:", error);
-    return res.status(500).json({ message: "Error verifying account", success: false });
+    console.error('Error verifying account:', error)
+    next('Server Error while verfing account')
   }
-};
+}
 
 export default { login, signup, histroy, verifyUser }
