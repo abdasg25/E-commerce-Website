@@ -1,0 +1,12 @@
+.header {
+    border: 5px solid black;
+    background-color: black;
+    color: white;
+    text-align: center;
+    padding: 0.5rem; /*Equivalent to py-2 in Tailwind CSS*/
+  }
+  .shopNow  {
+    font-family: 'Poppins', "sans-serif";
+    font-weight: bold;
+    text-decoration: underline;
+  }

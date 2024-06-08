@@ -1,0 +1,137 @@
+.home {
+    font-size: 14px;
+    font-family:"poppins";
+    color: #7a6f6f;
+}
+
+.account-header{
+    margin:0 135px;
+    font-size: 14px;
+    font-family:"poppins";
+    margin-left: 135px;
+}
+.welcome{
+    float: right;
+    font-size: 14px;
+    font-family:"poppins";
+}
+.user {
+    color: red;
+}
+.menu-item{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 0;
+    font-size: 1rem;
+    color: black;
+    cursor: pointer;
+    font-family: "poppins";
+    font-size: 16px;
+    margin-left: 20px;
+}
+.account-container{
+    margin:50px 0;
+    display: flex;
+}
+.profile-form p.edit-profile{
+    font-size: 20px;
+    font-family: "poppins";
+    color: red;
+    border: none;
+    box-shadow: none;
+    float:left;
+}
+.profile-form{
+    border: 1px solid #e0e0e0;
+    width: 50%;
+    margin: 20px;
+    box-shadow: 
+    5px 5px 5px #f5f5f5,
+    -5px -5px 5px #f5f5f5;
+    border-radius: 5px;
+    padding: 20px;
+}
+
+/* .profile-form label {
+    display: inline; 
+    margin-bottom: 10px;
+} */
+
+/* .profile-form input {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+} */
+ input{
+    /* display: block; */
+    border: 1px solid #f5f5f5;
+    background-color: #f5f5f5;
+    margin:1em 0;
+    width:100%;
+}
+.info label{
+    width: 40%;
+}
+.password input{
+    display: block;
+    border: 1px solid #f5f5f5;
+    background-color: #f5f5f5;
+    margin:1em 0;
+    width: 100%;
+}
+ .info{
+    display: flex;
+    justify-content: space-between;
+    margin: 1em 0;
+    width: 100%;
+    padding: 10px;
+
+ }   
+/* .form-group{
+    display: flex;
+
+} */    
+    
+    
+
+
+
+
+
+
+
+
+    
+    
+    .buttons {
+        display: flex;
+        justify-content: space-between;
+
+    }
+    
+.cancel-button,
+.save-button {
+        width: 15%;
+        height: 100%;
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    
+.cancel-button {
+        /* background-color: #f44336; */
+        color: black;
+        /* margin-left: 70%; */
+        border: 2px solid green;
+    }
+
+.save-button {
+    /* margin-left: 85%; */
+    background-color: #db4444;
+    color: white;
+}

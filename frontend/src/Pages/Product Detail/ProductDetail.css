@@ -1,0 +1,133 @@
+.product-detail {
+    display: flex;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    margin: 3% 135px;
+  }
+  
+  .images {
+    display: flex;
+    flex-direction: column;
+    margin-right: 20px;
+  }
+  
+  .images img {
+    width: 80px;
+    height: 20%;
+    margin-bottom: 10px;
+    cursor: pointer;
+    border: 1px solid #ccc;
+  }
+  
+  .main-image img {
+    width: 400px;
+    height: 100%;
+    border: 1px solid #ccc;
+
+  }
+  
+  .product-info {
+    flex: 1;
+    margin: 5px;
+    padding: 50px;
+  }
+  
+  .product-info h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  .reviews {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .stars {
+    color: #f5b50a;
+    margin-right: 5px;
+  }
+  
+  .stock-status {
+    margin-left: 10px;
+    color: green;
+  }
+  
+  .product-info h2 {
+    font-size: 20px;
+    color: #f44336;
+    margin-bottom: 20px;
+  }
+  .product-name{
+    font-size: 24px;
+    font-family: 'Inter';
+    font-weight: semibold;
+  }
+  
+  .options {
+    margin-bottom: 20px;
+  }
+  
+  .colours, .sizes {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .colour-button, .size-button {
+    background: #fff;
+    border: 1px solid #ccc;
+    margin-left: 5px;
+    padding: 5px;
+    cursor: pointer;
+  }
+  
+  .quantity {
+    display: flex;
+    align-items: center;
+  }
+  
+  .quantity button {
+    background: #fff;
+    border: 1px solid #ccc;
+    padding: 5px;
+    cursor: pointer;
+  }
+  
+  .quantity span {
+    margin: 0 10px;
+  }
+  
+  .actions {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .buy-button {
+    background: #f44336;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    margin-right: 10px;
+  }
+  
+  .wishlist-button {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+  }
+  
+  .delivery-info, .return-info {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .delivery-info p, .return-info p {
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  

@@ -1,0 +1,14 @@
+.sidebarCarousel {
+    display: flex;
+    align-items: flex-start; /* Align items at the top */
+  }
+  
+  .sidebar {
+    width: 250px; /* Fixed width for the sidebar */
+  }
+  
+  .carousel-container {
+    flex: 1; /* Take up the remaining space */
+    margin-left: 1rem; /* Space between sidebar and carousel */
+  }
+  
