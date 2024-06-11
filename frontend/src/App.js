@@ -8,7 +8,7 @@ import AddressBook from './Pages/Address Book/AddressBook.jsx';
 import ProductDetail from './Pages/Product Detail/ProductDetail.jsx';
 import ShoppingCartPage from './Pages/Shopping Cart/ShoppingCart.jsx';
 import Example from './Pages/Product Detail/ProductOverview.jsx';
-
+import Checkout from './Pages/Checkout/checkout.jsx';
 const router = createBrowserRouter(
   [
     {
@@ -42,6 +42,10 @@ const router = createBrowserRouter(
     {
       path: '/example',
       element: <Example/>
+    },
+    {
+      path:'/checkout',
+      element: <Checkout/>
     }
   ]
 );
