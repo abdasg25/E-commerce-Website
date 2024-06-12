@@ -43,7 +43,7 @@ const NavBar = () => {
           <input type="text" className="search-bar" placeholder="What are you looking for?" />
           <SearchIcon className="search-icon" />
         </div>
-        <button className="icon-button"><FavoriteBorderIcon /></button>
+        <button className="icon-button" onClick={() => handleNavigation('/wishlist')}><FavoriteBorderIcon /></button>
         <button className="icon-button" onClick={() => handleNavigation('/cart')}><ShoppingCartIcon /></button>
         <div>
         <ProfileDropdown />

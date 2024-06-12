@@ -14,6 +14,7 @@ import ProfileDropdown from './Components/ProfileDropdown/profileDropdown.jsx';
 import Product from "./Components/product/product.jsx";
 import ContactUs from "./Pages/ContactUs/contact.jsx";
 import AboutUs from './Pages/AboutUs/about.jsx';
+import WishlistPage from './Pages/WishlistPage/WishlistPage.jsx';
 const router = createBrowserRouter(
   [
     {
@@ -71,6 +72,10 @@ const router = createBrowserRouter(
     {
       path:'/aboutus',
       element: <AboutUs/>
+    },
+    {
+      path:'/wishlist',
+      element: <WishlistPage/>
     },
   ]
 );
