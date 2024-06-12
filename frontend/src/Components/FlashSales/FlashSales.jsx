@@ -43,6 +43,46 @@ const products = [
     rating: 4.5,
     reviews: 99,
   },
+  {
+    id: 5,
+    discount: '-25%',
+    image: 'https://via.placeholder.com/150',
+    name: 'S-Series Comfort Chair',
+    price: '$375',
+    oldPrice: '$400',
+    rating: 4.5,
+    reviews: 99,
+  },
+  {
+    id: 5,
+    discount: '-25%',
+    image: 'https://via.placeholder.com/150',
+    name: 'S-Series Comfort Chair',
+    price: '$375',
+    oldPrice: '$400',
+    rating: 4.5,
+    reviews: 99,
+  },
+  {
+    id: 5,
+    discount: '-25%',
+    image: 'https://via.placeholder.com/150',
+    name: 'S-Series Comfort Chair',
+    price: '$375',
+    oldPrice: '$400',
+    rating: 4.5,
+    reviews: 99,
+  },
+  {
+    id: 5,
+    discount: '-25%',
+    image: 'https://via.placeholder.com/150',
+    name: 'S-Series Comfort Chair',
+    price: '$375',
+    oldPrice: '$400',
+    rating: 4.5,
+    reviews: 99,
+  },
 ];
 
 const FlashSales = () => {
@@ -110,7 +150,7 @@ const FlashSales = () => {
             <img src={product.image} alt={product.name} />
             <h3>{product.name}</h3>
             <p className="price">
-              {product.price} <span className="old-price">{product.oldPrice}</span>
+              {product.price} {/*<span className="old-price">{product.oldPrice}</span>*/}
             </p>
             <div className="rating">
               {Array.from({ length: 5 }, (_, index) => (

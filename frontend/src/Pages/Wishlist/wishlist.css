@@ -1,0 +1,53 @@
+.wishlist {
+    /* Styles for the entire wishlist container */
+  }
+  
+  .wishlist h2 {
+    /* Styles for the wishlist heading */
+  }
+  
+  .wishlist-items {
+    /* Styles for the container holding wishlist items */
+  }
+  
+  .wishlist-item {
+    /* Styles for each wishlist item */
+    display: flex;
+    align-items: center;
+  }
+  
+  .product-image {
+    /* Styles for the product image */
+    margin-right: 20px;
+  }
+  
+  .product-details {
+    /* Styles for the product details section */
+    flex-grow: 1;
+  }
+  
+  .product-name {
+    /* Styles for the product name */
+  }
+  
+  .product-price {
+    /* Styles for the product price */
+    font-weight: bold;
+  }
+  
+  .buttons {
+    /* Styles for the button container */
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .buttons button {
+    /* Styles for the buttons */
+    padding: 10px 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  /* Add more styles as needed to match your specific design */
+  

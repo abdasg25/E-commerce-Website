@@ -1,5 +1,5 @@
 import './App.css';
-import { BrowserRouter, Routes, Route,createBrowserRouter, RouterProvider } from "react-router-dom"; 
+import { createBrowserRouter, RouterProvider } from "react-router-dom"; 
 import Home from './Pages/Home/Home.jsx';
 import SignUp from './Pages/SignUp/signup.jsx';
 import SignIn from './Pages/SignIn/signin.jsx';
@@ -9,6 +9,11 @@ import ProductDetail from './Pages/Product Detail/ProductDetail.jsx';
 import ShoppingCartPage from './Pages/Shopping Cart/ShoppingCart.jsx';
 import Example from './Pages/Product Detail/ProductOverview.jsx';
 import Checkout from './Pages/Checkout/checkout.jsx';
+import Dashboard from './Dasboard/Dashboard.jsx';
+import ProfileDropdown from './Components/ProfileDropdown/profileDropdown.jsx';
+import Product from "./Components/product/product.jsx";
+import ContactUs from "./Pages/ContactUs/contact.jsx";
+import AboutUs from './Pages/AboutUs/about.jsx';
 const router = createBrowserRouter(
   [
     {
@@ -46,7 +51,27 @@ const router = createBrowserRouter(
     {
       path:'/checkout',
       element: <Checkout/>
-    }
+    },
+    {
+      path:'/dashboard',
+      element: <Dashboard/>
+    },
+    {
+      path:'/profile',
+      element: <ProfileDropdown/>
+    },
+    {
+      path:'/product',
+      element: <Product/>
+    },
+    {
+      path:'/contactus',
+      element: <ContactUs/>
+    },
+    {
+      path:'/aboutus',
+      element: <AboutUs/>
+    },
   ]
 );
 function App() {

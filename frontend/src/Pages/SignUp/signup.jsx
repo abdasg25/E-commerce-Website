@@ -29,7 +29,8 @@ const SignUp = () => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    password: ''
+    password: '',
+    confirmPassword:''
   });
 
   const handleChange = (e) => {
@@ -82,8 +83,16 @@ const SignUp = () => {
             <input
               type="password"
               name="password"
-              placeholder="Password"
+              placeholder="Confirm Password"
               value={formData.password}
+              onChange={handleChange}
+              required
+            />
+            <input
+              type="password"
+              name="password"
+              placeholder="Password"
+              value={formData.confirmPassword}
               onChange={handleChange}
               required
             />

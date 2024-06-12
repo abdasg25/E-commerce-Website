@@ -1,9 +1,4 @@
-import Header from "../../Components/topHeader/Header";
-import NavBar from "../../Components/NavBar/navBar";
-import Footer from "../../Components/Footer/Footer";
-import Cart from "../../Components/Cart/Cart";
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import PropTypes from "prop-types";
 import {
 	faChevronDown,
@@ -44,24 +39,6 @@ const productList = [
 ];
 
 const SideBar = () => {
-  const [searchQuery, setSearchQuery] = useState('');
-  const navigate = useNavigate();
-
-  const handleSearchChange = (e) => {
-    setSearchQuery(e.target.value);
-  };
-
-  const handleSearchSubmit = (e) => {
-    e.preventDefault();
-    if (searchQuery.trim()) {
-      // Redirect to search results page with query
-      navigate(`/search?query=${searchQuery}`);
-    }
-  };
-
-  const handleNavigation = (path) => {
-    navigate(path);
-  };
 	return (
 		<div className="bg-blue-50 dark:bg-slate-800 rounded-xl flex flex-col gap-6 p-4 md:p-6">
 			<div className="">
@@ -88,7 +65,7 @@ const SideBar = () => {
 				</div>
 			</div>
 			<div className="">
-				<button className="w-full bg-blue-600 rounded-md text-white hover:bg-opacity-90 py-2.5" onClick={() => handleNavigation('/checkout')}>  
+				<button className="w-full bg-blue-600 rounded-md text-white hover:bg-opacity-90 py-2.5">
 					BUY (13)
 				</button>
 			</div>
@@ -205,9 +182,6 @@ const Epcart3 = () => {
 	};
 
 	return (
-    <>
-    <Header/>
-    <NavBar/>
 		<section className="ezy__epcart3 light py-14 md:py-24 bg-white dark:bg-[#0b1727] text-zinc-900 dark:text-white relative overflow-hidden z-10">
 			<div className="container px-4 mx-auto">
 				<div className="flex flex-col lg:flex-row gap-6">
@@ -225,9 +199,7 @@ const Epcart3 = () => {
 				</div>
 			</div>
 		</section>
-    <Footer/>
-    </>
 	);
 };
 
-export default Epcart3;
+export default Epcart3
