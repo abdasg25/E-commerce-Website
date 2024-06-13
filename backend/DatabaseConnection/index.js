@@ -1,7 +1,9 @@
 import mongoose from 'mongoose'
 import dotenv from 'dotenv'
-dotenv.config()
+dotenv.config();
+
 const mongoURI = process.env.MONGOURI
+console.log(mongoURI)
 const connectToMongo = async () => {
   mongoose
     .connect(mongoURI, {
@@ -18,3 +20,4 @@ const connectToMongo = async () => {
 }
 
 export default connectToMongo
+

@@ -10,17 +10,16 @@ import saveVerificationToken from '../Utils/saveVerificationToken.js'
 import sendVerificationEmail from '../Utils/sendVerificationEmail.js'
 
 
-// http://localhost:4000/api/v1/user/signup
+// http://localhost:4000/api/v1/user/signup TYPE:POST
 const signup = async (req, res, next) => {
-  const { cnic, username, email, password } = req.body
-  if (!cnic || !username || !email || !password){
+  const {username, email, password } = req.body
+  if (!username || !email || !password){
     next("Not Data")
   }
   const alreadyExistUsername = await User.findOne({ username })
   const alreadyExistEmail = await User.findOne({ email })
-  const alreadyExistCnic = await User.findOne({ cnic })
 
-  if (alreadyExistUsername || alreadyExistEmail || alreadyExistCnic) {
+  if (alreadyExistUsername || alreadyExistEmail) {
     next('User already exist')
   } else {
     try {
@@ -31,7 +30,6 @@ const signup = async (req, res, next) => {
         email: email,
         name: username,
         password: hashed_password,
-        cnic: cnic
       })
 
       await saveVerificationToken(userDetails._id, verificationToken)
@@ -45,7 +43,8 @@ const signup = async (req, res, next) => {
   }
 }
 
-// http://localhost:4000/api/v1/user/login
+// http://localhost:4000/api/v1/user/login   TYPE:POST
+
 const login = async (req, res) => {
   try {
     const { email, password } = req.body
@@ -85,7 +84,8 @@ const login = async (req, res) => {
             token: `Bearer ${token}`,
             message: 'login successfully',
             success,
-            userId: auth_user._id
+            userId: auth_user._id,
+            role:auth_user.role
           })
         }
       }
@@ -95,7 +95,7 @@ const login = async (req, res) => {
   }
 }
 
-// http://localhost:4000/api/v1/user/histroy
+// http://localhost:4000/api/v1/user/histroy TYPE:GET
 const histroy = async (req, res) => {
   try {
     const token = req.headers.authorization

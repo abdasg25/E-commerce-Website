@@ -1,16 +1,39 @@
 import mongoose from 'mongoose'
 
 const productSchema = new mongoose.Schema({
-  productId: {
-    type: Number,
-    required: true,
-    unique: true
+  // productId: {
+  //   type: Number,
+  //   required: true,
+  //   unique: true
+  // },
+  title:{
+    type: String,
   },
-  images: [
+  image:{
+    type: String,
+  
+  },
+  previews:[
     {
-      type: String
+      previewUrl:{
+        type: String,
+      },
+      thumbUrl:{
+        type: String,
+      
+      }
     }
   ],
+  rating:{
+      type:Number,
+      required:true,
+      default:0
+  },
+  rateCount:{
+    type:Number,
+    required:true,
+      default:0
+  },
   price: {
     type: Number,
     required: true,

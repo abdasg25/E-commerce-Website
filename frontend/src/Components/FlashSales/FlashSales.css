@@ -44,12 +44,12 @@
   
   .product-card {
     position: relative;
-    width: 300px;
     background-color: #f8f8f8;
     padding: 10px;
     border-radius: 10px;
     text-align: center;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 600px;
   }
   
   .discount {

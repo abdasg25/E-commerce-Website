@@ -1,4 +1,5 @@
 import nodemailer from 'nodemailer'
+import { configDotenv } from 'dotenv'
 
 // sendVerificationMail
 const sendVerificationEmail = async (email, token) => {

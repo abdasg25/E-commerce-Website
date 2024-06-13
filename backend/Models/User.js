@@ -9,7 +9,6 @@ const userSchema = new mongoose.Schema(
     },
     cnic: {
       type: String,
-      required: true,
       unique: true
     },
     email: {
@@ -30,6 +29,11 @@ const userSchema = new mongoose.Schema(
     },
     tokenExpires: {
       type: Date
+    },
+    role:{
+      type: String,
+      enum:['user','vendor'],
+      default: 'user'
     },
     wishList: [
       {

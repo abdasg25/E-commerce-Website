@@ -5,13 +5,12 @@ import dotenv from 'dotenv'
 import connectToMongo from '../DatabaseConnection/index.js'
 import ErrorMiddleWare from '../Middlewares/ErrorMiddleware.js'
 
-dotenv.config()
+dotenv.config({path: "../.env"});
 const app = express()
-
 app.use(cors())
 app.use(express.json())
 
-import userRoute from '../Routes/userRoutes.js'
+import userRoute from '../Routes/UserRoutes.js'
 import productRoute from '../Routes/productRoutes.js'
 import orderRoute from '../Routes/orderRoutes.js'
 import wishListRoute from '../Routes/wishListRoute.js'
@@ -30,4 +29,4 @@ connectToMongo()
   })
   .catch(err => {
     console.log('Error occurred during Database connection. Error is: ', err)
-  })
+  }) 

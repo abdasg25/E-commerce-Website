@@ -1,11 +1,12 @@
-import {React,useState} from 'react';
+import { React, useState } from 'react';
 import './NavBar.css';
 import { useNavigate } from 'react-router-dom';
 import SearchIcon from '@mui/icons-material/Search';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-
+import ProfileDropdown from '../ProfileDropdown/profileDropdown';
 const NavBar = () => {
+  const role = localStorage.getItem('role');
   const [searchQuery, setSearchQuery] = useState('');
   const navigate = useNavigate();
 
@@ -33,9 +34,9 @@ const NavBar = () => {
       </div>
       <div className="navbar-center">
         <button className="nav-button" onClick={() => handleNavigation('/home')}>Home</button>
-        <button className="nav-button">Contact</button>
-        <button className="nav-button">About</button>
-        <button className="nav-button" onClick={() => handleNavigation('/signup')}>Sign Up</button>
+        <button className="nav-button" onClick={() => handleNavigation('/contactus')}>Contact</button>
+        <button className="nav-button" onClick={() => handleNavigation('/aboutus')}>About</button>
+        { role ?<></>:<button className="nav-button" onClick={() => handleNavigation('/signup')}>Sign Up</button>}
       </div>
       <div className="navbar-right">
         <div className="search-container">
@@ -43,11 +44,16 @@ const NavBar = () => {
           <input type="text" className="search-bar" placeholder="What are you looking for?" />
           <SearchIcon className="search-icon" />
         </div>
-        <button className="icon-button"><FavoriteBorderIcon /></button>
-        <button className="icon-button"><ShoppingCartIcon /></button>
+        <button className="icon-button" onClick={() => role ?handleNavigation('/wishlist'):handleNavigation('/signin')}><FavoriteBorderIcon /></button>
+        <button className="icon-button" onClick={() => role ?handleNavigation('/cart'):handleNavigation('/signin')}><ShoppingCartIcon /></button>
+        {
+          role?
+          <div>
+            <ProfileDropdown />
+          </div>:<></>
+        }
       </div>
     </nav>
   );
 };
-
 export default NavBar;
