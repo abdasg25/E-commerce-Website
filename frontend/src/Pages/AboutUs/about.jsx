@@ -3,6 +3,7 @@ import Header from "../../Components/topHeader/Header";
 import NavBar from "../../Components/NavBar/navBar";
 import Footer from "../../Components/Footer/Footer";
 import Number from "../../Components/impNumbers/numbers";
+import TeamMember from "../../Components/TeamMembers/team";
 const AboutUs14 = () => {
 	return (
         <>
@@ -60,6 +61,7 @@ const AboutUs14 = () => {
 			</div>
 		</section>
         <Number />
+		<TeamMember />
         <Footer />
         </>
 	);

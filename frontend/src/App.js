@@ -15,8 +15,12 @@ import Product from "./Components/product/product.jsx";
 import ContactUs from "./Pages/ContactUs/contact.jsx";
 import AboutUs from './Pages/AboutUs/about.jsx';
 import WishlistPage from './Pages/WishlistPage/WishlistPage.jsx';
+import UploadProductPage from './Pages/Admin/UploadProduct/uploadProductPage.jsx';
+import Verification from './Pages/Verification/verification.jsx';
+import NotFoundPage from './Pages/notFound/notFoundPage.jsx';
 const router = createBrowserRouter(
   [
+    
     {
       path: '/home',
       element: <Home/>
@@ -66,6 +70,10 @@ const router = createBrowserRouter(
       element: <Product/>
     },
     {
+      path:'/product/:productId',
+      element: <Product/>
+    },
+    {
       path:'/contactus',
       element: <ContactUs/>
     },
@@ -77,6 +85,18 @@ const router = createBrowserRouter(
       path:'/wishlist',
       element: <WishlistPage/>
     },
+    {
+      path:'/uploadproduct',
+      element:<UploadProductPage/>
+    },
+    {
+      path:'/ecommerence/verifyUser/:token' ,
+      element:<Verification/>
+    },
+    {
+      path:"*",
+      element:<NotFoundPage/>
+    }
   ]
 );
 function App() {

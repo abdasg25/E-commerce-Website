@@ -42,13 +42,19 @@ const ProfileDropdown = () => {
     setIsOpen(!isOpen);
   };
 
+  const handleLogout = async () => {
+    localStorage.removeItem('role');
+    localStorage.removeItem('token');
+    window.location.href = '/home';
+  };
+
   return (
-    <div className="relative inline-block text-left">
+    <div className="relative inline-block text-left z-50">
       <button className="flex items-center focus:outline-none" onClick={toggleDropdown}>
         <FontAwesomeIcon icon={faUser} className="text-xl text-gray-700" />
       </button>
       {isOpen && (
-        <div className="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
+        <div className="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none z-50">
           <div className="py-1">
             <a href="#account" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
               <FontAwesomeIcon icon={faUser} className="mr-2" /> Manage My Account
@@ -62,7 +68,7 @@ const ProfileDropdown = () => {
             <a href="#reviews" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
               <FontAwesomeIcon icon={faStar} className="mr-2" /> My Reviews
             </a>
-            <a href="#logout" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+            <a href="#logout" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onClick={handleLogout}>
               <FontAwesomeIcon icon={faSignOutAlt} className="mr-2" /> Logout
             </a>
           </div>

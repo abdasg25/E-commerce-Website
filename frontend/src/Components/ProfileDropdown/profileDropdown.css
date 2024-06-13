@@ -1,6 +1,7 @@
 .profile-dropdown {
-    position: relative;
+    position: fixed;
     display: inline-block;
+    z-index: 1000; /* Ensure it stays above other content */
   }
   
   .profile-icon {
@@ -23,6 +24,7 @@
     padding: 10px;
     /* font-size: 0px; */
     /* width: 100%; */
+    z-index: 1000;
   }
   
   .dropdown-menu ul {

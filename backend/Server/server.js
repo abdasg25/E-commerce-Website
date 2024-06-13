@@ -1,13 +1,30 @@
-import express from 'express';
-import connectToMongo from '../DatabaseConnection/index.js';
-const app = express();
+import express from 'express'
+import cors from 'cors'
+import dotenv from 'dotenv'
+import { PORT } from '../Constant/Constant.js'
+import connectToMongo from '../DatabaseConnection/index.js'
+import ErrorMiddleWare from '../Middlewares/ErrorMiddleware.js'
 
-app.get('/',(req,res)=>{
-    res.send('server is running here')
-});
-connectToMongo();
-const port = process.env.PORT || 4000;
+dotenv.config({path: "../config.env"});
+const app = express()
+app.use(cors())
+app.use(express.json())
 
-app.listen(port,()=>{
-    console.log(`server is running at http://localhost:${port}`)
-})
+import userRoute from '../Routes/UserRoutes.js'
+import productRoute from '../Routes/productRoutes.js'
+import orderRoute from '../Routes/orderRoutes.js'
+
+app.use('/api/v1/user', userRoute)
+app.use('/api/v1/product', productRoute)
+app.use('/api/v1/order', orderRoute)
+app.use(ErrorMiddleWare)
+
+connectToMongo()
+  .then(() => {
+    app.listen(PORT, () => {
+      console.log(`Server is running at http://localhost:${PORT}`)
+    })
+  })
+  .catch(err => {
+    console.log('Error occurred during Database connection. Error is: ', err)
+  }) 

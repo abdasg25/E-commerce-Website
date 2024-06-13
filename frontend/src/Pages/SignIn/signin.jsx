@@ -5,8 +5,9 @@ import Header from '../../Components/topHeader/Header';
 import Footer from '../../Components/Footer/Footer';
 import { loginSchema } from './loginSchema';
 import {useFormik} from 'formik';
-import Snackbar from '@mui/material/Snackbar';
 import './signin.css';
+import Snackbar from '@mui/material/Snackbar';
+const BACKEND_PORT = "http://localhost:4000";
 const initialValues = {
   email: "",
   password: "",
@@ -20,7 +21,7 @@ const SignIn = () => {
       initialValues,
       validationSchema: loginSchema,
       onSubmit: (values) => {
-        const apiUrl = `http://localhost:${process.env.FRONTEND_PORT}/Hospital/signin`;
+        const apiUrl = `${BACKEND_PORT}/api/v1/user/login`;
         const data = values;
 
         const requestOptions = {
@@ -49,7 +50,7 @@ const SignIn = () => {
               // alert("Login successful");
               // localStorage.getItem('role') === "Admin"?
               // window.location.href = '/Admin/Dashboard':
-              // window.location.href = '/home';
+              window.location.href = '/home';
             } else {
               setMessage("Please check the Form/Internet.Signin Failed");
               // alert("Please check the Form/Internet.Signin Failed");
@@ -169,5 +170,4 @@ const SignIn = () => {
     </>
   );
 };
-
 export default SignIn;

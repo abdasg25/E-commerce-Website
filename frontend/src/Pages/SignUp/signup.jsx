@@ -7,8 +7,8 @@ import { useNavigate } from 'react-router-dom';
 import {useFormik} from 'formik';
 import { signUpSchema } from './signupSchema';
 import { signUp } from '../../Services api/signup';
+import Snackbar from '@mui/material/Snackbar';
 import './signup.css';
-
 const SignUp = () => {
   const [message, setMessage] = useState(""); // Declare message and setMessage
   const [displayAlert, setDisplayAlert] = useState(false); // Declare message and setMessage
@@ -32,8 +32,10 @@ const SignUp = () => {
           setDisplayAlert(true)
         } catch (error) {
           if (error && error.data && error.data.errors) {
-            setErrors(error.data.errors);
-            setMessage("Username Already Exist.Signup Failed")
+            // setErrors(error.data.errors);
+            // console.log(error)
+            // console.log(error.data)
+            setMessage(error.data.errors)
             setDisplayAlert(true)
           } else {
             // Handle generic error
@@ -108,6 +110,14 @@ const SignUp = () => {
     <>
       <Header />
       <NavBar />
+      {displayAlert?
+      <Snackbar
+        anchorOrigin={{ vertical, horizontal }}
+        open={true}
+        onClick={handleClose}
+        message= {message}
+        key={vertical + horizontal}
+      />:''}
       <div className="signup-container">
         <div className="image-container">
           <img src="/login.png" alt="Phone with Shopping Cart" />

@@ -3,8 +3,10 @@ import PropTypes from "prop-types";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // import { FaStar } from "react-icons/fa";
 import { faHeart, faShareAlt,faStar } from "@fortawesome/free-solid-svg-icons";    
-const product = {
-	title: "Beats Headphone 2019",
+const product = 
+{
+	_id:5,
+	title: "ID 05",
 	previews: [
 		{
 			previewUrl:
@@ -28,30 +30,155 @@ const product = {
 	rating: 5.0,
 	rateCount: 1256,
 	price: 27351,
-	colorVariants: [
-		{ bgcolor: "bg-yellow-500", value: "Multi" },
-		{ bgcolor: "bg-blue-500", value: "Blue" },
-		{ bgcolor: "bg-red-400", value: "Pink" },
-		{ bgcolor: "bg-black", value: "Black" },
-		{ bgcolor: "bg-red-600", value: "Red" },
-	],
-	sizeVariants: [
-		{ label: "XXS", value: "SSX", title: "Extra extra small" },
-		{ label: "XS", value: "XS", title: "Extra small" },
-		{ label: "S", value: "S", title: "Small" },
-		{ label: "M", value: "M", title: "Medium" },
-		{ label: "L", value: "L", title: "Large" },
-		{ label: "XL", value: "XL", title: "Extra large" },
-		{ label: "XXL", value: "XXL", title: "Extra extra large" },
-		{
-			label: "XXXL",
-			value: "XXXL",
-			title: "Extra extra extra large",
-			disabled: true,
-		},
-	],
 };
-
+// {
+// 	id:9,
+// 	title: "ID 09",
+// 	previews: [
+// 		{
+// 			previewUrl:
+// 				"https://cdn.easyfrontend.com/pictures/ecommerce/headphone2.png",
+// 			thumbUrl:
+// 				"https://cdn.easyfrontend.com/pictures/ecommerce/headphone2-1.png",
+// 		},
+// 		{
+// 			previewUrl:
+// 				"https://cdn.easyfrontend.com/pictures/ecommerce/headphone2-2.png",
+// 			thumbUrl:
+// 				"https://cdn.easyfrontend.com/pictures/ecommerce/headphone2-2.png",
+// 		},
+// 		{
+// 			previewUrl:
+// 				"https://cdn.easyfrontend.com/pictures/ecommerce/headphone2-3.png",
+// 			thumbUrl:
+// 				"https://cdn.easyfrontend.com/pictures/ecommerce/headphone2-3.png",
+// 		},
+// 	],
+// 	rating: 5.0,
+// 	rateCount: 1256,
+// 	price: 27351,
+// 	colorVariants: [
+// 		{ bgcolor: "bg-yellow-500", value: "Multi" },
+// 		{ bgcolor: "bg-blue-500", value: "Blue" },
+// 		{ bgcolor: "bg-red-400", value: "Pink" },
+// 		{ bgcolor: "bg-black", value: "Black" },
+// 		{ bgcolor: "bg-red-600", value: "Red" },
+// 	],
+// 	sizeVariants: [
+// 		{ label: "XXS", value: "SSX", title: "Extra extra small" },
+// 		{ label: "XS", value: "XS", title: "Extra small" },
+// 		{ label: "S", value: "S", title: "Small" },
+// 		{ label: "M", value: "M", title: "Medium" },
+// 		{ label: "L", value: "L", title: "Large" },
+// 		{ label: "XL", value: "XL", title: "Extra large" },
+// 		{ label: "XXL", value: "XXL", title: "Extra extra large" },
+// 		{
+// 			label: "XXXL",
+// 			value: "XXXL",
+// 			title: "Extra extra extra large",
+// 			disabled: true,
+// 		},
+// 	],
+// },
+// {
+// 	id:6,
+// 	title: "ID 06",
+// 	previews: [
+// 		{
+// 			previewUrl:
+// 				"https://cdn.easyfrontend.com/pictures/ecommerce/headphone2.png",
+// 			thumbUrl:
+// 				"https://cdn.easyfrontend.com/pictures/ecommerce/headphone2-1.png",
+// 		},
+// 		{
+// 			previewUrl:
+// 				"https://cdn.easyfrontend.com/pictures/ecommerce/headphone2-2.png",
+// 			thumbUrl:
+// 				"https://cdn.easyfrontend.com/pictures/ecommerce/headphone2-2.png",
+// 		},
+// 		{
+// 			previewUrl:
+// 				"https://cdn.easyfrontend.com/pictures/ecommerce/headphone2-3.png",
+// 			thumbUrl:
+// 				"https://cdn.easyfrontend.com/pictures/ecommerce/headphone2-3.png",
+// 		},
+// 	],
+// 	rating: 5.0,
+// 	rateCount: 1256,
+// 	price: 27351,
+// 	colorVariants: [
+// 		{ bgcolor: "bg-yellow-500", value: "Multi" },
+// 		{ bgcolor: "bg-blue-500", value: "Blue" },
+// 		{ bgcolor: "bg-red-400", value: "Pink" },
+// 		{ bgcolor: "bg-black", value: "Black" },
+// 		{ bgcolor: "bg-red-600", value: "Red" },
+// 	],
+// 	sizeVariants: [
+// 		{ label: "XXS", value: "SSX", title: "Extra extra small" },
+// 		{ label: "XS", value: "XS", title: "Extra small" },
+// 		{ label: "S", value: "S", title: "Small" },
+// 		{ label: "M", value: "M", title: "Medium" },
+// 		{ label: "L", value: "L", title: "Large" },
+// 		{ label: "XL", value: "XL", title: "Extra large" },
+// 		{ label: "XXL", value: "XXL", title: "Extra extra large" },
+// 		{
+// 			label: "XXXL",
+// 			value: "XXXL",
+// 			title: "Extra extra extra large",
+// 			disabled: true,
+// 		},
+// 	],
+// },
+// {
+// 	id:8,
+// 	title: "ID 08",
+// 	previews: [
+// 		{
+// 			previewUrl:
+// 				"https://cdn.easyfrontend.com/pictures/ecommerce/headphone2.png",
+// 			thumbUrl:
+// 				"https://cdn.easyfrontend.com/pictures/ecommerce/headphone2-1.png",
+// 		},
+// 		{
+// 			previewUrl:
+// 				"https://cdn.easyfrontend.com/pictures/ecommerce/headphone2-2.png",
+// 			thumbUrl:
+// 				"https://cdn.easyfrontend.com/pictures/ecommerce/headphone2-2.png",
+// 		},
+// 		{
+// 			previewUrl:
+// 				"https://cdn.easyfrontend.com/pictures/ecommerce/headphone2-3.png",
+// 			thumbUrl:
+// 				"https://cdn.easyfrontend.com/pictures/ecommerce/headphone2-3.png",
+// 		},
+// 	],
+// 	rating: 5.0,
+// 	rateCount: 1256,
+// 	price: 27351,
+// 	colorVariants: [
+// 		{ bgcolor: "bg-yellow-500", value: "Multi" },
+// 		{ bgcolor: "bg-blue-500", value: "Blue" },
+// 		{ bgcolor: "bg-red-400", value: "Pink" },
+// 		{ bgcolor: "bg-black", value: "Black" },
+// 		{ bgcolor: "bg-red-600", value: "Red" },
+// 	],
+// 	sizeVariants: [
+// 		{ label: "XXS", value: "SSX", title: "Extra extra small" },
+// 		{ label: "XS", value: "XS", title: "Extra small" },
+// 		{ label: "S", value: "S", title: "Small" },
+// 		{ label: "M", value: "M", title: "Medium" },
+// 		{ label: "L", value: "L", title: "Large" },
+// 		{ label: "XL", value: "XL", title: "Extra large" },
+// 		{ label: "XXL", value: "XXL", title: "Extra extra large" },
+// 		{
+// 			label: "XXXL",
+// 			value: "XXXL",
+// 			title: "Extra extra extra large",
+// 			disabled: true,
+// 		},
+// 	],
+// },
+// ];
 const ProductPreviews = ({ previews }) => {
 	const [index, setIndex] = useState(0);
 
@@ -83,110 +210,6 @@ const ProductPreviews = ({ previews }) => {
 ProductPreviews.propTypes = {
 	previews: PropTypes.array.isRequired,
 };
-
-const ColorVariant = () => {
-	const [selectedColor, setSelectedColor] = useState("Multi");
-
-	const handleColorChange = (value) => {
-		setSelectedColor(value);
-	};
-
-	return (
-		<>
-			<div className="mb-6">
-				<h5 className="font-medium mb-2">
-					Color:{" "}
-					<span className="opacity-50">
-						{selectedColor &&
-							product.colorVariants.find(
-								(color) => color.value === selectedColor
-							)?.value}
-					</span>
-				</h5>
-				<div className="flex gap-3">
-					{product.colorVariants.map((item, i) => (
-						<Fragment key={i}>
-							<input
-								type="radio"
-								className="absolute hidden"
-								autoComplete="off"
-								checked={selectedColor === item.value}
-								onChange={() => handleColorChange(item.value)}
-							/>
-							<label
-								className={`w-8 h-8 rounded-full ${
-									item.bgcolor
-								} border-2 border-white dark:border-[#0b1727] cursor-pointer mt-1 hover:outline hover:outline-1 hover:outline-${
-									item.color
-								} ${
-									selectedColor === item.value &&
-									`outline outline-1 outline-${item.color}`
-								}`}
-								onClick={() => handleColorChange(item.value)}
-							></label>
-						</Fragment>
-					))}
-				</div>
-			</div>
-		</>
-	);
-};
-
-const SizeVariant = () => {
-	const [selectedSize, setSelectedSize] = useState("XXS");
-
-	const handleSizeChange = (value) => {
-		if (product.sizeVariants.find((size) => size.value === value)?.disabled) {
-			return;
-		}
-		setSelectedSize(value);
-	};
-
-	return (
-		<div className="mb-6">
-			<h5 className="font-medium mb-2">
-				Size:{" "}
-				<span className="opacity-50">
-					{selectedSize &&
-						product.sizeVariants.find((size) => size.value === selectedSize)
-							?.title}
-				</span>
-			</h5>
-			<div className="flex flex-wrap gap-2 mb-2">
-				{product.sizeVariants.map((size) => (
-					<React.Fragment key={size.label}>
-						<input
-							type="radio"
-							className="absolute hidden"
-							autoComplete="off"
-							checked={selectedSize === size.label}
-							onChange={() => handleSizeChange(size.label)}
-						/>
-						<label
-							className={`bg-gray-100 dark:bg-slate-800 
-                                hover:bg-slate-100
-                                dark:hover:bg-blue-100/[0.2]
-                                cursor-pointer
-                                py-1 px-4 rounded-full border mt-1 ${
-																	selectedSize === size.label
-																		? "border-blue-600 dark:border-blue-600"
-																		: "border-blue-50 dark:border-blue-600 dark:border-opacity-20"
-																}  ${
-								size.disabled
-									? "line-through opacity-40 cursor-not-allowed"
-									: "cursor-pointer"
-							}`}
-							onClick={() => handleSizeChange(size.value)}
-						>
-							{size.label}
-						</label>
-					</React.Fragment>
-				))}
-			</div>
-		</div>
-	);
-};
-
 const QtyField = ({ name, value, onChange }) => {
 	const qtyControl = (qty) =>
 		onChange({
@@ -282,12 +305,6 @@ const Epoverview4 = () => {
 						</div>
 
 						<form action="#!">
-							<div className="mb-6">
-								<ColorVariant />
-							</div>
-							<div className="mb-6">
-								<SizeVariant />
-							</div>
 							<div className="mb-6">
 								<h5 className="font-medium mb-2">QTY</h5>
 								<QtyField onChange={setField} name="qty" value={formData.qty} />
