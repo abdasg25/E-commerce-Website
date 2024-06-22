@@ -7,10 +7,10 @@ import UploadProduct from "../../../Components/UploadProduct/uploadProduct";
 const UploadProductPage = () => {
     return (
         <>
-        {/* <Header/> */}
-        <NavBar/>
+        <Header />
+        <NavBar />  
         <UploadProduct/>
-        {/* <Footer/> */}
+        <Footer/>
         </>
     )
 }

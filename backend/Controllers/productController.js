@@ -61,7 +61,21 @@ const add = async (req, res) => {
     res.status(200).json({ success: true, result: 'Added successfully' })
   } catch (error) {
     next('Server Error while fetching data')
+    console.log(error)
   }
 }
 
-export default { allProducts, category, filterBySize, filterByPrice, add }
+
+//http:localhost:4000/api/v1/product/:productId
+const productDetails = async ( req, res ) => {
+  try {
+    const productId = req.params.productId
+    const product = await Product.findById(productId);
+    if(!product) return res.status(404).json({ success: false, error: 'Product not found' })
+    res.status(200).json({ success: true, result: product })
+  }catch(error){
+    next('Server Error while fetching data')
+  }
+}
+
+export default { allProducts, category, filterBySize, filterByPrice, add,productDetails }

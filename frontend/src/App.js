@@ -18,6 +18,8 @@ import WishlistPage from './Pages/WishlistPage/WishlistPage.jsx';
 import UploadProductPage from './Pages/Admin/UploadProduct/uploadProductPage.jsx';
 import Verification from './Pages/Verification/verification.jsx';
 import NotFoundPage from './Pages/notFound/notFoundPage.jsx';
+import AdminSideBar from './Components/SidebarAdmin/sidebar.jsx';
+import AdminDashboardOrders from './Components/Admin/AdminDashboardOrders.jsx';
 const router = createBrowserRouter(
   [
     
@@ -70,7 +72,7 @@ const router = createBrowserRouter(
       element: <Product/>
     },
     {
-      path:'/product/:productId',
+      path:'/productdetail/:productId',
       element: <Product/>
     },
     {
@@ -96,6 +98,14 @@ const router = createBrowserRouter(
     {
       path:"*",
       element:<NotFoundPage/>
+    },
+    {
+      path: '/sidebar',
+      element: <AdminSideBar/>
+    },
+    {
+      path:'/admin-orders',
+      element:<AdminDashboardOrders/>
     }
   ]
 );

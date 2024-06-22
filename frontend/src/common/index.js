@@ -9,28 +9,12 @@ const SummaryApi = {
         url : `${backendDomin}/api/signin`,
         method : "post"
     },
-    current_user : {
-        url : `${backendDomin}/api/user-details`,
-        method : "get"
-    },
-    logout_user : {
-        url : `${backendDomin}/api/userLogout`,
-        method : 'get'
-    },
-    allUser : {
-        url : `${backendDomin}/api/all-user`,
-        method : 'get'
-    },
-    updateUser : {
-        url : `${backendDomin}/api/update-user`,
-        method : "post"
-    },
     uploadProduct : {
-        url : `${backendDomin}/api/upload-product`,
+        url : `${backendDomin}/api/v1/product/add`,
         method : 'post'
-    },
+    },  
     allProduct : {
-        url : `${backendDomin}/api/get-product`,
+        url : `${backendDomin}/api/v1/product/`,
         method : 'get'
     },
     updateProduct : {
@@ -46,7 +30,7 @@ const SummaryApi = {
         method : 'post'
     },
     productDetails : {
-        url : `${backendDomin}/api/product-details`,
+        url : `${backendDomin}/api/v1/product`,
         method : 'post'
     },
     addToCartProduct : {

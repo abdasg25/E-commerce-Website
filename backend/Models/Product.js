@@ -6,42 +6,42 @@ const productSchema = new mongoose.Schema({
   //   required: true,
   //   unique: true
   // },
-  title:{
+  title: {
     type: String,
   },
-  image:{
+  image: {
     type: String,
-  
+
   },
-  previews:[
-    {
-      previewUrl:{
-        type: String,
-      },
-      thumbUrl:{
-        type: String,
-      
-      }
-    }
-  ],
-  rating:{
-      type:Number,
-      required:true,
-      default:0
-  },
-  rateCount:{
-    type:Number,
-    required:true,
-      default:0
-  },
-  price: {
+  // previews: [{
+  //   previewUrl: {
+  //     type: String,
+  //   },
+  // }
+  // ],
+  rating: {
     type: Number,
     required: true,
     default: 0
   },
+  rateCount: {
+    type: String,
+    required: true,
+    default: 0
+  },
+  price: {
+    type: String,
+    required: true,
+    default: 0
+  },
   stock: {
-    type: Number,
+    type: String,
     required: true
+  },
+  shipping:{
+    type: String,
+    required: true,
+    default:0
   },
   size: [
     {
@@ -50,13 +50,21 @@ const productSchema = new mongoose.Schema({
     }
   ],
   discount: {
-    type: Number,
+    type: String,
     required: true
   },
   category: {
     type: String,
     enum: ['Male', 'Female', 'Children'],
     required: true
+  },
+  description: {
+    type: String,
+    required: true
+  },
+  real:{
+    type:String,
+    required:true
   }
 })
 

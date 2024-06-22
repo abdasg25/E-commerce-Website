@@ -5,66 +5,94 @@ import {
 	faHeart,
 	faStar,
 	faStarHalfAlt,
+	faShoppingCart,
 } from "@fortawesome/free-solid-svg-icons";
+import { faStar as farStar } from '@fortawesome/free-solid-svg-icons';
 import PropTypes from "prop-types";
+import { Fragment } from "react";
 import {Link} from "react-router-dom";
-const Product = ({ product }) => {
+const Rating = ({ rating }) => (
+	<span className="flex items-center text-yellow-500">
+		{[...Array(5)].map((_, i) => {
+			const index = i + 1;
+			let content = "";
+			if (index <= Math.floor(rating))
+				content = <FontAwesomeIcon icon={faStar} className="mr-1" />;
+			else if (rating > i && rating < index + 1)
+				content = <FontAwesomeIcon icon={faStarHalfAlt} className="mr-1" />;
+			else if (index > rating)
+				content = <FontAwesomeIcon icon={farStar} className="mr-1" />;
+
+			return <Fragment key={i}>{content}</Fragment>;
+		})}
+	</span>
+);
+
+Rating.propTypes = {
+	rating: PropTypes.number,
+};
+
+const ProductItem = ({ product }) => {
 	return (
-		<div className="col-span-12 md:col-span-6 lg:col-span-4">
-			<div className="bg-white dark:bg-slate-800 shadow border dark:border-slate-700 rounded-xl p-4 pb-0">
-				<div className="bg-gray-100 dark:bg-slate-700 rounded flex justify-center items-center min-h-[265px] relative p-12 w-full">
-					{product.isNew && (
-						<h6 className="bg-cyan-400 text-white absolute top-4 left-0 rounded-r-md px-6 py-2 mb-0 font-medium">
-							New
-						</h6>
-					)}
-					<div className="absolute top-2.5 right-2.5 w-10 h-10 bg-white dark:bg-slate-800 rounded-full text-base flex justify-center items-center cursor-pointer">
-						<FontAwesomeIcon icon={faHeart} />
-					</div>
-					<img src={product.image} alt="" className="max-w-full h-auto" />
-					<button className="absolute bottom-4 right-0 rounded-l-md bg-blue-600 text-white hover:bg-opacity-90 font-bold py-2 px-6">
-						Add to cart
-					</button>
+		<div className="rounded border dark:border-slate-700 h-full">
+			<div className="relative">
+				{/* <h6 className="absolute top-3 right-5 bg-green-500 text-white py-1 px-3 rounded-2xl">
+					{product.new}
+				</h6> */}
+				<a href="#!">
+					<img src={product.img} alt="..." className="w-full rounded-t" />
+				</a>
+			</div>
+			<div className="p-4 lg:p-6 text-start">
+					<Link to={`/productdetail/${product._id}`}>
+					<h5 className="text-[17px] font-medium hover:underline mb-1">
+						{product.title}
+					</h5>
+				</Link>
+				<a href="#!">
+					<h5 className="text-sm leading-none opacity-60 hover:underline font-medium">
+						{product.category}
+					</h5>
+				</a>
+				<div className="py-2 flex items-center">
+					<h5 className="text-2xl font-medium text-blue-600">
+						${product.discount}
+					</h5>
+					<h5 className="text-[15px] opacity-70 line-through ml-2">
+						${product.real}
+					</h5>
 				</div>
-				<div className="py-6 px-1">
-					<div className="flex justify-between items-center">
-						<div>
-						<Link to={`/product/${product.id}`}>
-                <h6 className="hover:text-blue-600 text-[17px] font-medium mb-1">
-                  {product.name}
-                </h6></Link>
-							<span className="text-sm text-yellow-500">
-								{Array.from(
-									{ length: Math.floor(product.rating) },
-									(_, index) => (
-										<FontAwesomeIcon
-											key={index}
-											icon={faStar}
-											className="mr-1"
-										/>
-									)
-								)}
-								{product.rating % 1 !== 0 && (
-									<FontAwesomeIcon icon={faStarHalfAlt} className="mr-1" />
-								)}
-							</span>
-						</div>
-						<div>
-							<p className="text-3xl font-bold">${product.price}</p>
-						</div>
+				<div className="opacity-80">
+					<h6 className="font-medium text-sm mb-1">
+						Shipping Cost: ${product.shipping}
+					</h6>
+					<h6 className="text-sm font-medium">
+						Stock:
+						<span className="text-emerald-500">{product.availibility}</span>
+					</h6>
+				</div>
+				<div className="flex justify-between items-center mt-6">
+					<div className="flex items-center text-yellow-500">
+						<Rating rating={product.rating} />
+						<span className="text-black dark:text-white opacity-75">
+							({product.count})
+						</span>
+					</div>
+					<div className="flex">
+						<button className="text-blue-600 border border-blue-600 hover:bg-blue-600 hover:text-white rounded py-1 px-3 text-sm mr-2">
+							<FontAwesomeIcon icon={faHeart} />
+						</button>
+						<button className="bg-blue-600 border border-blue-600 text-white hover:bg-opacity-90 py-1 px-3 rounded text-sm">
+							<FontAwesomeIcon icon={faShoppingCart} />
+						</button>
 					</div>
 				</div>
 			</div>
 		</div>
 	);
 };
-Product.propTypes = {
-	product: PropTypes.shape({
-		image: PropTypes.string.isRequired,
-		name: PropTypes.string.isRequired,
-		rating: PropTypes.number.isRequired,
-		price: PropTypes.number.isRequired,
-		isNew: PropTypes.bool.isRequired,
-	}).isRequired,
+
+ProductItem.propTypes = {
+	product: PropTypes.object.isRequired,
 };
-export default Product;
+export default ProductItem;
